@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PPSY: Escape the Psych Clinic</title>
+<meta name="description" content="A comedy escape-room game about major depressive disorder, mood disorders and schizophrenia.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <button class="logo" id="logoBtn" type="button" aria-label="PPSY, go to home">PPSY</button>
+  <span class="sub">Introduction to Psychology</span>
+</header>
+
+<div class="hud" id="hud" hidden>
+  <div class="hud-row">
+    <strong id="roomNum">Room 1 of 5</strong>
+    <span class="pill" id="scoreBox">Score: <b id="score">0</b></span>
+    <span class="pill" id="timer">Untimed</span>
+    <span class="grow"></span>
+    <button class="btn small" id="restartBtn" type="button">Restart</button>
+    <button class="btn small" id="homeBtn" type="button">Home</button>
+  </div>
+  <div class="steps" id="steps" aria-hidden="true"></div>
+</div>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="screen card">
+    <h1>Escape the Psych Clinic</h1>
+    <p class="lead">Dr. Quirk has locked you in her very messy clinic. Search each room, read the clues, then name the disorder to open the door. Five rooms, about 10 minutes.</p>
+    <div class="outcome">
+      <h2>Learning outcome</h2>
+      <p>You will be able to <strong>differentiate the types of disorders</strong>: major depressive disorder, bipolar disorder (both mood disorders) and schizophrenia.</p>
+    </div>
+    <label class="check"><input type="checkbox" id="untimed"> Untimed mode (hide the clock and focus on learning)</label>
+    <div class="row">
+      <button class="btn primary" id="playBtn" type="button">Play</button>
+      <button class="btn" id="howBtn" type="button">How to play</button>
+    </div>
+  </section>
+
+  <!-- INSTRUCTIONS -->
+  <section id="how" class="screen card" hidden>
+    <h1>How to play</h1>
+    <h2>Goal</h2>
+    <p>Escape all 5 rooms. In each room, inspect every object to find clues, then try the locked door. The door asks a question about a character. Pick the answer that fits the situation.</p>
+    <h2>Controls</h2>
+    <ul>
+      <li><b>Mouse or touch:</b> tap objects, the door and answer buttons.</li>
+      <li><b>Keyboard:</b> press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> to inspect the objects and the door, <kbd>1</kbd>–<kbd>4</kbd> to choose an answer, <kbd>Esc</kbd> to close a clue, <kbd>Tab</kbd> and <kbd>Enter</kbd> to move and press buttons.</li>
+    </ul>
+    <h2>Scoring</h2>
+    <ul>
+      <li>Correct on the 1st try: <b>20 points</b>. 2nd try: <b>10</b>. 3rd try or more: <b>5</b>.</li>
+      <li>A wrong answer never ends the game. Read why it is wrong, then try again.</li>
+      <li>Speed does not matter. The clock is only a pacing guide, and it never changes your score.</li>
+      <li>Maximum score: <b>100</b>.</li>
+    </ul>
+    <div class="row">
+      <button class="btn primary" id="howPlayBtn" type="button">Play</button>
+      <button class="btn" id="howBackBtn" type="button">Back to home</button>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="game" class="screen" hidden>
+    <div class="bubble" id="story"></div>
+    <div class="room" id="room">
+      <h2 id="roomName"></h2>
+      <div class="scene" id="scene"></div>
+      <p class="hint" id="roomHint" aria-live="polite"></p>
+    </div>
+    <div class="panel" id="panel" hidden></div>
+  </section>
+
+  <!-- COMPLETE -->
+  <section id="done" class="screen card" hidden>
+    <h1>You escaped!</h1>
+    <p class="big">Final score: <b id="finalScore"></b></p>
+    <p id="finalMsg" class="lead"></p>
+    <h2>What each room taught you</h2>
+    <ol id="results" class="results"></ol>
+    <h2>Quick comparison</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Disorder</th><th>Main problem</th><th>Typical signs</th></tr></thead>
+        <tbody>
+          <tr><td>Major depressive disorder</td><td>Mood (only lows)</td><td>Low mood or no interest for 2+ weeks, sleep and appetite changes, tiredness, worthlessness. No mania.</td></tr>
+          <tr><td>Bipolar disorder</td><td>Mood (highs and lows)</td><td>Manic episodes (little sleep, racing thoughts, risky spending) alternating with depression.</td></tr>
+          <tr><td>Schizophrenia</td><td>Thought and reality</td><td>Hallucinations, delusions, disorganised speech, flat emotions, lasting 6+ months.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <button class="btn primary" id="againBtn" type="button">Play again</button>
+      <button class="btn" id="doneHomeBtn" type="button">Back to home</button>
+    </div>
+  </section>
+</main>
+
+<footer>PPSY · For learning only. This game does not diagnose anyone. If you or someone you know is struggling, talk to a counsellor or a health professional.</footer>
+<script src="script.js"></script>
+</body>
+</html>
